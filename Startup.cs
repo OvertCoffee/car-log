@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using car_log.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace car_log
 {
@@ -24,6 +26,10 @@ namespace car_log
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbcontext<CarLogContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("FileDB"))
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
