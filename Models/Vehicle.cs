@@ -8,7 +8,7 @@ namespace car_log.Models
         public VehicleType Type { get; set; }
         public string Notes { get; set; }
     }
-    private enum VehicleType
+    public enum VehicleType
     {
         Automobile,
         Plane

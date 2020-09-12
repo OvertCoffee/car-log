@@ -1,6 +1,6 @@
 using System;
 
-namespace car_log
+namespace car_log.Models
 {
     public class Record
     {

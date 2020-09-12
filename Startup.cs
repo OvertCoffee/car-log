@@ -26,10 +26,10 @@ namespace car_log
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-
-            services.AddDbcontext<CarLogContext>(options =>
+            
+            services.AddDbContext<CarLogContext>(options => 
                 options.UseSqlite(Configuration.GetConnectionString("FileDB"))
-            );
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

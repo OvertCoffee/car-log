@@ -10,6 +10,6 @@ namespace car_log.Data
 
         }
         public DbSet<car_log.Models.Vehicle> Vehicle { get; set; }
-        public DbSet<car_log.Models.Recorc> Record { get; set; }
+        public DbSet<car_log.Models.Record> Record { get; set; }
     }
 }
