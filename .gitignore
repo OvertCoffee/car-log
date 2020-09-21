@@ -12,3 +12,5 @@ bin/
 obj/
 
 CarLog.db
+car-log.csproj.user
+.vs/**/.suo
