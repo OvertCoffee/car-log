@@ -38,35 +38,26 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Record) {
+    @foreach (var item in Model.Record)
+    {
+        string odoReading = $"{item.Odometer:n0}";
+        string theTrip = $"{item.Trip:n1}";
+        string gals = $"{item.Gallons:n3}";
+        string theCost = $"${item.Cost:n2}";
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Odometer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Trip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gallons)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
+            <td>@item.Time.ToString("yyyy.MM.dd")</td>
+            <td>@Html.DisplayFor(modelItem => item.Location)</td>
+            <td>@Html.DisplayFor(m => odoReading)</td>
+            <td>@Html.DisplayFor(m => theTrip)</td>
+            <td>@Html.DisplayFor(m => gals)</td>
+            <td>@Html.DisplayFor(m => theCost)</td>
+            <td>@Html.DisplayFor(modelItem => item.Notes)</td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
