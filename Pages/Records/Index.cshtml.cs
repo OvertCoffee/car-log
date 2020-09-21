@@ -19,11 +19,11 @@ namespace car_log.Pages.Records
             _context = context;
         }
 
-        public IList<Record> Record { get;set; }
+        public IList<Record> Records { get;set; }
 
         public async Task OnGetAsync()
         {
-            Record = await _context.Record.ToListAsync();
+            Records = await _context.Record.OrderByDescending(r => r.Time).ToListAsync();
         }
     }
 }

@@ -10,52 +10,54 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Record[0].Time)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Record[0].Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Record[0].Odometer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Record[0].Trip)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Record[0].Gallons)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Record[0].Cost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Record[0].Notes)
-            </th>
-            <th></th>
+        <tr class="row">
+            @*<th class="col-1">@Html.DisplayNameFor(model => model.Record[0].Time)</th>
+        <th class="col-1">@Html.DisplayNameFor(model => model.Record[0].Location)</th>
+        <th class="col-1">@Html.DisplayNameFor(model => model.Record[0].Odometer)</th>
+        <th class="col-1">@Html.DisplayNameFor(model => model.Record[0].Trip)</th>
+        <th class="col-1">@Html.DisplayNameFor(model => model.Record[0].Gallons)</th>
+        <th class="col-1">@Html.DisplayNameFor(model => model.Record[0].Cost)</th>
+        <th class="col-1">@Html.DisplayNameFor(model => model.Record[0].Notes)</th>*@
+            <th class="col-1">Time</th>
+            <th class="col-1">Loc</th>
+            <th class="col-1">Odo</th>
+            <th class="col-1">Trip</th>
+            <th class="col-1">Gal</th>
+            <th class="col-1">Cost</th>
+            <th class="col-1">Notes</th>
+            <th class="col-3"></th>
         </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model.Record)
+        @{ 
+            int maxNoteLength = 20;
+        }
+    @foreach (var item in Model.Records)
     {
         string odoReading = $"{item.Odometer:n0}";
         string theTrip = $"{item.Trip:n1}";
         string gals = $"{item.Gallons:n3}";
         string theCost = $"${item.Cost:n2}";
-        <tr>
-            <td>@item.Time.ToString("yyyy.MM.dd")</td>
-            <td>@Html.DisplayFor(modelItem => item.Location)</td>
-            <td>@Html.DisplayFor(m => odoReading)</td>
-            <td>@Html.DisplayFor(m => theTrip)</td>
-            <td>@Html.DisplayFor(m => gals)</td>
-            <td>@Html.DisplayFor(m => theCost)</td>
-            <td>@Html.DisplayFor(modelItem => item.Notes)</td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+        string theNote = item.Notes?.Trim() ?? string.Empty;
+        if (maxNoteLength > 0)
+            theNote = theNote.Length > maxNoteLength ? theNote.Substring(0, maxNoteLength) : theNote;
+        <tr class="row">
+            @*<td class="col-1 dateCol">@item.Time.ToString("yyyy.MM.dd")</td>*@
+            @*<td class="col-1">@item.Time.ToString("MMM.dd")</td>*@
+            <td class="col-1">@item.Time.ToString("MM/dd")</td>
+            <td class="col-1">@Html.DisplayFor(modelItem => item.Location)</td>
+            <td class="col-1">@Html.DisplayFor(m => odoReading)</td>
+            <td class="col-1">@Html.DisplayFor(m => theTrip)</td>
+            <td class="col-1">@Html.DisplayFor(m => gals)</td>
+            <td class="col-1">@Html.DisplayFor(m => theCost)</td>
+            <td class="col-1">@Html.DisplayFor(m => theNote)</td>
+            <td class="col-3 btn-group">
+                <a class="btn btn-outline-warning" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-outline-primary" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-outline-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
     }
