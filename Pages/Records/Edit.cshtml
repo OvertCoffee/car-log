@@ -14,41 +14,57 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Record.Id" />
+
+            @* Time *@
             <div class="form-group">
                 <label asp-for="Record.Time" class="control-label"></label>
                 <input asp-for="Record.Time" class="form-control" />
                 <span asp-validation-for="Record.Time" class="text-danger"></span>
             </div>
+
+            @* Location *@
             <div class="form-group">
                 <label asp-for="Record.Location" class="control-label"></label>
                 <input asp-for="Record.Location" class="form-control" />
                 <span asp-validation-for="Record.Location" class="text-danger"></span>
             </div>
+
+            @* Odometer *@
             <div class="form-group">
                 <label asp-for="Record.Odometer" class="control-label"></label>
-                <input asp-for="Record.Odometer" class="form-control" />
+                <input type="number" asp-for="Record.Odometer" class="form-control" />
                 <span asp-validation-for="Record.Odometer" class="text-danger"></span>
             </div>
+
+            @* Trip *@
             <div class="form-group">
                 <label asp-for="Record.Trip" class="control-label"></label>
-                <input asp-for="Record.Trip" class="form-control" />
+                <input type="number" asp-for="Record.Trip" class="form-control" />
                 <span asp-validation-for="Record.Trip" class="text-danger"></span>
             </div>
+
+            @* Gallons *@
             <div class="form-group">
                 <label asp-for="Record.Gallons" class="control-label"></label>
-                <input asp-for="Record.Gallons" class="form-control" />
+                <input type="number" asp-for="Record.Gallons" class="form-control" />
                 <span asp-validation-for="Record.Gallons" class="text-danger"></span>
             </div>
+
+            @* Cost *@
             <div class="form-group">
                 <label asp-for="Record.Cost" class="control-label"></label>
-                <input asp-for="Record.Cost" class="form-control" />
+                <input type="number" asp-for="Record.Cost" class="form-control" />
                 <span asp-validation-for="Record.Cost" class="text-danger"></span>
             </div>
+
+            @* Notes *@
             <div class="form-group">
                 <label asp-for="Record.Notes" class="control-label"></label>
                 <input asp-for="Record.Notes" class="form-control" />
                 <span asp-validation-for="Record.Notes" class="text-danger"></span>
             </div>
+
+            @* Submit *@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
